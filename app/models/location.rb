@@ -1,3 +1,3 @@
 class Location < ActiveRecord::Base
-  belongs_to :place, :polymorphic => true
+  belongs_to :locatable, :polymorphic => true
 end

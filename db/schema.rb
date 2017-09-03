@@ -19,4 +19,31 @@ ActiveRecord::Schema.define(version: 20170901142004) do
     t.string "name"
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.string "address"
+    t.float "lat"
+    t.float "lng"
+    t.bigint "locatable_id"
+    t.string "locatable_type"
+    t.index ["locatable_type", "locatable_id"], name: "index_locations_on_locatable_type_and_locatable_id"
+  end
+
+  create_table "rates", force: :cascade do |t|
+    t.integer "counter"
+    t.integer "value"
+    t.bigint "ratable_id"
+    t.string "ratable_type"
+    t.index ["ratable_type", "ratable_id"], name: "index_rates_on_ratable_type_and_ratable_id"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.text "work_days"
+    t.text "work_hours"
+    t.text "break_hours"
+    t.string "note"
+    t.string "schedulable_type"
+    t.bigint "schedulable_id"
+    t.index ["schedulable_type", "schedulable_id"], name: "index_schedules_on_schedulable_type_and_schedulable_id"
+  end
+
 end
