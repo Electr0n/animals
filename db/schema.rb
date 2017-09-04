@@ -17,15 +17,49 @@ ActiveRecord::Schema.define(version: 20170901142004) do
 
   create_table "clinics", force: :cascade do |t|
     t.string "name"
+    t.string "sites"
+    t.text "about"
+  end
+
+  create_table "discounts", force: :cascade do |t|
+    t.string "name"
+    t.text "note"
+    t.integer "values"
   end
 
   create_table "locations", force: :cascade do |t|
     t.string "address"
+    t.string "metro"
     t.float "lat"
     t.float "lng"
     t.bigint "locatable_id"
     t.string "locatable_type"
     t.index ["locatable_type", "locatable_id"], name: "index_locations_on_locatable_type_and_locatable_id"
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.string "name"
+    t.text "note"
+    t.string "conditions"
+    t.string "advantages"
+    t.datetime "date_start"
+    t.datetime "date_end"
+  end
+
+  create_table "pharmacies", force: :cascade do |t|
+    t.string "name"
+    t.string "sites"
+    t.text "about"
+  end
+
+  create_table "phones", force: :cascade do |t|
+    t.integer "country_code"
+    t.integer "provider_code"
+    t.integer "number"
+    t.string "note"
+    t.bigint "phonable_id"
+    t.string "phonable_type"
+    t.index ["phonable_type", "phonable_id"], name: "index_phones_on_phonable_type_and_phonable_id"
   end
 
   create_table "rates", force: :cascade do |t|
@@ -36,13 +70,24 @@ ActiveRecord::Schema.define(version: 20170901142004) do
     t.index ["ratable_type", "ratable_id"], name: "index_rates_on_ratable_type_and_ratable_id"
   end
 
+  create_table "responses", force: :cascade do |t|
+    t.string "head"
+    t.text "body"
+    t.integer "mark"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.bigint "responsable_id"
+    t.string "responsable_type"
+    t.index ["responsable_type", "responsable_id"], name: "index_responses_on_responsable_type_and_responsable_id"
+  end
+
   create_table "schedules", force: :cascade do |t|
     t.text "work_days"
     t.text "work_hours"
     t.text "break_hours"
     t.string "note"
-    t.string "schedulable_type"
     t.bigint "schedulable_id"
+    t.string "schedulable_type"
     t.index ["schedulable_type", "schedulable_id"], name: "index_schedules_on_schedulable_type_and_schedulable_id"
   end
 

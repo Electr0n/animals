@@ -1,7 +1,8 @@
-class Clinic < ActiveRecord::Base
+class Pharmacy < ActiveRecord::Base
   has_one :location,  :as => :locatable,    :dependent => :destroy
   has_one :rate,      :as => :ratable,      :dependent => :destroy
   has_one :schedule,  :as => :schedulable,  :dependent => :destroy
+
   has_many  :phones, 
             :class_name => "Phone",   
             :as => :phonable,     
