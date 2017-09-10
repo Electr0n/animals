@@ -5,12 +5,15 @@ class CreateClinics < ActiveRecord::Migration[5.1]
       t.string  :name
       t.string  :sites
       t.text    :about
+      t.boolean :chip
     end
 
     create_table :pharmacies do |t|
       t.string  :name
       t.string  :sites
       t.text    :about
+      t.boolean :medicine
+      t.boolean :scale
     end
 
     create_table :locations do |t|

@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170901142004) do
     t.string "name"
     t.string "sites"
     t.text "about"
+    t.boolean "chip"
   end
 
   create_table "discounts", force: :cascade do |t|
@@ -50,6 +51,8 @@ ActiveRecord::Schema.define(version: 20170901142004) do
     t.string "name"
     t.string "sites"
     t.text "about"
+    t.boolean "medicine"
+    t.boolean "scale"
   end
 
   create_table "phones", force: :cascade do |t|
